@@ -20,10 +20,17 @@ app.use('/api/absences',     absencesRouter);
 app.use('/api/jours-libres', joursLibresRouter);
 app.use('/api/stats',        statsRouter);
 
+// Fallback SPA — sert index.html pour toutes les routes non-API
 app.get('/{*splat}', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Serveur démarré sur http://localhost:${PORT}`);
-});
+// Démarrage local uniquement (pas sur Vercel qui gère le serveur lui-même)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Serveur démarré sur http://localhost:${PORT}`);
+  });
+}
+
+// Export pour Vercel (serverless)
+module.exports = app;
