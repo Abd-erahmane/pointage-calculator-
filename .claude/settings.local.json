@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(curl -s -X POST http://localhost:3000/api/absences -H \"Content-Type: application/json\" -d '{\"date\":\"2026-05-07\",\"heures_presentes\":2,\"heures_absentes\":5}')",
-      "Bash(curl -s -X POST http://localhost:3000/api/absences -H \"Content-Type: application/json\" -d '{\"date\":\"2026-05-07\",\"heures_presentes\":1,\"heures_absentes\":2}')"
+      "Bash(curl -s -X POST http://localhost:3000/api/absences -H \"Content-Type: application/json\" -d '{\"date\":\"2026-05-07\",\"heures_presentes\":1,\"heures_absentes\":2}')",
+      "WebFetch(domain:github.com)",
+      "Bash(grep -E \"^\\(node_modules|\\\\.env$\\)\")",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git push *)"
     ]
   }
 }
