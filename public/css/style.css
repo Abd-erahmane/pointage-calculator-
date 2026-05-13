@@ -1,0 +1,123 @@
+/* ── Alert blinking ──────────────────────────────────────────── */
+@keyframes blink-alert {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+.alert-blink {
+  animation: blink-alert 0.9s ease-in-out infinite;
+}
+
+/* ── Calendar day cells ──────────────────────────────────────── */
+.day-cell {
+  min-height: 70px;
+  border-radius: 0.5rem;
+  padding: 6px 5px 4px;
+  border: 2px solid transparent;
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.day-cell.clickable {
+  cursor: pointer;
+}
+.day-cell.clickable:hover {
+  transform: scale(1.06);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Weekend / non-travaillé */
+.day-weekend {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Futur (non encore saisissable) */
+.day-future {
+  background-color: #f8fafc;
+  color: #cbd5e1;
+  cursor: default;
+}
+
+/* Jour pleinement présent */
+.day-present {
+  background-color: #bbf7d0;
+  border-color: #22c55e;
+}
+
+/* Jour avec absence */
+.day-absent {
+  background-color: #fecaca;
+  border-color: #ef4444;
+}
+
+/* Jour libre */
+.day-libre {
+  background-color: #e9d5ff;
+  border-color: #a855f7;
+}
+
+/* Aujourd'hui */
+.day-today {
+  box-shadow: 0 0 0 3px #3b82f6 !important;
+}
+
+/* Cellule vide (avant le 1er du mois) */
+.day-empty {
+  background: transparent;
+}
+
+.day-number {
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.day-hours {
+  font-size: 0.65rem;
+  color: #374151;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* ── En-têtes jours de semaine ───────────────────────────────── */
+.weekday-header {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: #6b7280;
+  padding: 4px 0 8px;
+}
+.weekday-header.weekend-header {
+  color: #94a3b8;
+}
+
+/* ── Barre de progression ────────────────────────────────────── */
+#absence-bar {
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+#absence-bar.bar-ok      { background-color: #22c55e; }
+#absence-bar.bar-warning { background-color: #f59e0b; }
+#absence-bar.bar-danger  { background-color: #ef4444; }
+
+/* ── Modal overlay ───────────────────────────────────────────── */
+#day-panel, #confirm-delete {
+  backdrop-filter: blur(2px);
+}
+
+/* ── Sidebar hauteur pleine page ─────────────────────────────── */
+.sidebar {
+  height: calc(100vh - 53px); /* topbar height */
+}
+
+/* ── Scrollbar discrète dans la sidebar ──────────────────────── */
+#etudiant-list {
+  scrollbar-width: thin;
+  scrollbar-color: #e2e8f0 transparent;
+}
+#etudiant-list::-webkit-scrollbar { width: 4px; }
+#etudiant-list::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 4px; }
